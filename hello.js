@@ -22,7 +22,7 @@ app.post('/like', function(req, res){
     if (result){
       client.incr(key, () => {
         console.log('success incr', arguments)
-        wss.broadcast('success')
+        wss.broadcast('like');
         res.send({success: true});
       });
     }
@@ -65,8 +65,8 @@ function checkLikesLimit(fingerprint, callback) {
       if (result == null){
         var now = (new Date).getTime();
         client.zadd(likers, now, fingerprint, function(){
-        console.log('zadd',arguments)
-        callback(true)
+          console.log('zadd',arguments)
+          callback(true)
         });
       } else {
         callback(false)

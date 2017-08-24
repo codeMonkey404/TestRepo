@@ -3,10 +3,13 @@ html
     title= title
     script(src="/js/fingerprint.js")
     script(src="http://code.jquery.com/jquery-1.6.2.min.js")
+    script(src="http://underscorejs.org/underscore-min.js")
+
     script(src="/js/api.js")
+    script(src="/js/app.js" type="text/babel")
+
+    script(src="/js/react.js")
+    script(src="/js/react-dom.js")
+    script(src="/js/browser.min.js")
   body
-    h1= message
-    iframe(width="420", height="315", src="https://www.youtube.com/embed/et281UHNoOU")
-    br
-    button(onclick="addLike()") Like
-    div(id= "counter")= likes 
+    div(id="app" data-likes=likes data-message=message)
